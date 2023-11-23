@@ -10,6 +10,17 @@ public class Car : MonoBehaviour
     [SerializeField] private float deceleration = 10f;
 
     private Vector3 velocity = Vector3.zero;
+    TrailRenderer trail;
+
+    void Start()
+    {
+        trail = gameObject.AddComponent<TrailRenderer>();
+        trail.time = 5;
+        trail.material.color = Color.white;
+        trail.startWidth = 0.5f;
+        trail.endWidth = 0f;
+        trail.enabled = true;
+    }
 
     void Update()
     {
