@@ -14,6 +14,7 @@ public class CarTest : MonoBehaviour
     private Rigidbody _rigidbody;
     private Wheel[] wheels;
 
+    private TrailRenderer trail;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,13 @@ public class CarTest : MonoBehaviour
         wheels = GetComponentsInChildren<Wheel>();
         _rigidbody = GetComponent<Rigidbody>();
         _rigidbody.centerOfMass = centerOfMass.localPosition;
+
+        trail = gameObject.AddComponent<TrailRenderer>();
+        trail.time = 5;
+        trail.material.color = Color.blue;
+        trail.startWidth = 0.5f;
+        trail.endWidth = 0f;
+        trail.enabled = true;
     }
 
     // Update is called once per frame
