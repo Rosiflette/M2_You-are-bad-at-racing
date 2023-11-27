@@ -15,19 +15,12 @@ public class Wheel : MonoBehaviour
         wheelCollider = GetComponent<WheelCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void FixedUpdate()
     {
         if (steer)
         {
             wheelCollider.steerAngle = SteerAngle * (invertSteer ? -1 : 1);
         }
-
         if (power)
         {
             wheelCollider.motorTorque = Torque;

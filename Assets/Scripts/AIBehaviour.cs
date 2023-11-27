@@ -5,25 +5,26 @@ using UnityEngine;
 public class AIBehaviour : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    [SerializeField, Range(1, 50)] private float maxSpeed;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float acceleration;
-
-    private Vector3 velocity = Vector3.zero;
+    [SerializeField] Transform centerfMass;
+    [SerializeField] private float motorTorque;
+    [SerializeField] private float maxSteer;
 
     TrailRenderer trail;
+    private Rigidbody _rigidbody;
+    private Wheel[] wheels;
 
     // Start is called before the first frame update
     void Start()
     {
-        //GetComponent<MeshRenderer>().material.color = Color.red;
+        wheels = GetComponentsInChildren<Wheel>();
+        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.centerOfMass = centerfMass.localPosition;
 
         trail = gameObject.AddComponent<TrailRenderer>();
         trail.time = 5;
         trail.material.color = Color.red;
         trail.startWidth = 0.5f;
         trail.endWidth = 0f;
-        trail.enabled = true;
     }
 
     // Update is called once per frame
@@ -47,35 +48,35 @@ public class AIBehaviour : MonoBehaviour
                 rayHit++;
             }
             else
-                Debug.DrawRay(posOnLine, Vector3.down, Color.red);
-        }
-
-        if (rayCasted > 0)
-        {
-            //Debug.Log($"{rayHit} hits on {rayCasted} raycast : {(rayHit / (float)rayCasted) * 100}%");
-
-            float percentageHit = rayHit / (float)rayCasted;
-            if (percentageHit > 0.85f)
             {
-                float rotationAngle = rotationSpeed * Time.deltaTime;
-                Vector3 newDirection = Vector3.RotateTowards(transform.forward, (target.position - transform.position).normalized, rotationAngle, 0.0f);
-                transform.rotation = Quaternion.LookRotation(newDirection);
+                Debug.DrawRay(posOnLine, Vector3.down, Color.red);
             }
         }
 
-        //float horizontal = Input.GetAxis("Horizontal");
+        float Steer = 0;
+        if (rayCasted > 0)
+        {
+            float percentageHit = rayHit / (float)rayCasted;
+            if (percentageHit > 0.85f)
+            {
+                var angle = Vector3.SignedAngle(transform.forward, vectorToTarget, Vector3.up);
+                if (angle > 0) //right
+                {
+                    print("RIGHT");
+                    Steer = 1;
+                }
+                else if (angle < 0) //left
+                {
+                    print("LEFT");
+                    Steer = -1;
+                }
+            }
+        }
 
-        
-        //Quaternion rotation = Quaternion.Euler(0f, rotationAngle, 0f);
-
-        
-
-        Vector3 nextPos = Vector3.forward.normalized * maxSpeed;
-
-        velocity = Vector3.Lerp(velocity, nextPos, Time.deltaTime * acceleration);
-
-        ////gameObject.transform.rotation *= rotation;
-        transform.Translate(velocity * Time.deltaTime);
-
+        foreach (Wheel wheel in wheels)
+        {
+            wheel.SteerAngle = Steer * maxSteer;
+            wheel.Torque = motorTorque;
+        }
     }
 }

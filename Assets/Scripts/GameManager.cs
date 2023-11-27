@@ -14,10 +14,4 @@ public class GameManager : MonoBehaviour
         Instance = this;
         InputController = GetComponentInChildren<InputController>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
