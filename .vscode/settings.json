@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "2023_You-are-bad-at-racing.sln"
+    "dotnet.defaultSolution": "M2_You-are-bad-at-racing.sln"
 }
