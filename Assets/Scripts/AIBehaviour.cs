@@ -4,27 +4,29 @@ using UnityEngine;
 
 public class AIBehaviour : MonoBehaviour
 {
+    [SerializeField] private Transform centerOfMass;
+    [SerializeField] private float motorTorque = 1500f;
+    [SerializeField] private float maxSteer = 15f;
+    [SerializeField] private Color trailColor;
     [SerializeField] private Transform target;
-    [SerializeField] Transform centerfMass;
-    [SerializeField] private float motorTorque;
-    [SerializeField] private float maxSteer;
 
-    TrailRenderer trail;
-    private Rigidbody _rigidbody;
+    private TrailRenderer trail;
+    private Rigidbody rigidBody;
     private Wheel[] wheels;
 
     // Start is called before the first frame update
     void Start()
     {
         wheels = GetComponentsInChildren<Wheel>();
-        _rigidbody = GetComponent<Rigidbody>();
-        _rigidbody.centerOfMass = centerfMass.localPosition;
+        rigidBody = GetComponent<Rigidbody>();
+        rigidBody.centerOfMass = centerOfMass.localPosition;
 
         trail = gameObject.AddComponent<TrailRenderer>();
         trail.time = 5;
-        trail.material.color = Color.red;
+        trail.material.color = trailColor;
         trail.startWidth = 0.5f;
         trail.endWidth = 0f;
+        trail.enabled = true;
     }
 
     // Update is called once per frame
