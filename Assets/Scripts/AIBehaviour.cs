@@ -64,12 +64,10 @@ public class AIBehaviour : MonoBehaviour
                 var angle = Vector3.SignedAngle(transform.forward, vectorToTarget, Vector3.up);
                 if (angle > 0) //right
                 {
-                    print("RIGHT");
                     Steer = 1;
                 }
                 else if (angle < 0) //left
                 {
-                    print("LEFT");
                     Steer = -1;
                 }
             }
