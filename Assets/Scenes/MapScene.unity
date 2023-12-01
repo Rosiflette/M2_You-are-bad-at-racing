@@ -378,17 +378,17 @@ PrefabInstance:
     - target: {fileID: 2198460384468481408, guid: dc67dec0922a1e74a9b633f262e95ad8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 258
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2198460384468481408, guid: dc67dec0922a1e74a9b633f262e95ad8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2198460384468481408, guid: dc67dec0922a1e74a9b633f262e95ad8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 57
+      value: 15.005006
       objectReference: {fileID: 0}
     - target: {fileID: 2198460384468481408, guid: dc67dec0922a1e74a9b633f262e95ad8,
         type: 3}
@@ -663,6 +663,7 @@ GameObject:
   - component: {fileID: 1704896963}
   - component: {fileID: 1704896962}
   - component: {fileID: 1704896966}
+  - component: {fileID: 1704896967}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -781,8 +782,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1704896960}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36650118, y: 0, z: 0, w: 0.9304176}
-  m_LocalPosition: {x: 245.09999, y: 26.713999, z: 70.299995}
+  m_LocalRotation: {x: 0.32892072, y: -0, z: -0, w: 0.9443576}
+  m_LocalPosition: {x: -3.96, y: 18, z: -5.500001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -797,17 +798,32 @@ PositionConstraint:
   m_GameObject: {fileID: 1704896960}
   m_Enabled: 1
   serializedVersion: 2
-  m_Weight: 0.95
-  m_TranslationAtRest: {x: 0, y: 0, z: 0}
-  m_TranslationOffset: {x: 0, y: 18, z: 17}
+  m_Weight: 1
+  m_TranslationAtRest: {x: -3.96, y: 18, z: -5.500001}
+  m_TranslationOffset: {x: -3.96, y: 18, z: -20.505007}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
-  m_Active: 0
+  m_Active: 1
   m_IsLocked: 0
   m_Sources:
   - sourceTransform: {fileID: 1500485830}
     weight: 1
+--- !u!114 &1704896967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704896960}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd300395abbabb4d902f1e53c52b7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetX: 12
+  car: {fileID: 1500485830}
+  step: 1
 --- !u!1001 &1962621879
 PrefabInstance:
   m_ObjectHideFlags: 0
