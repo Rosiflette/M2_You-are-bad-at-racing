@@ -13,7 +13,8 @@ public class MovingCarMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePosition = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x-450, gameObject.transform.position.y -300, -1000);
-        gameObject.transform.LookAt(mousePosition);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 lookPosition = new Vector3(mousePosition.x*2-450, mousePosition.y + gameObject.transform.position.y -200, -1000);
+        gameObject.transform.LookAt(lookPosition);
     }
 }
