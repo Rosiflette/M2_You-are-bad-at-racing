@@ -43,4 +43,9 @@ public class PlayerBehaviour : MonoBehaviour
             wheel.Torque = Throttle * motorTorque;
         }
     }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.PlayerDestroyed();
+    }
 }

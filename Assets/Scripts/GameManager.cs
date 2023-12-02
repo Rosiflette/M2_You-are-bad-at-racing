@@ -8,10 +8,47 @@ public class GameManager : MonoBehaviour
 
     public InputController InputController { get; private set; }
 
+    [SerializeField] private GameObject playerPrefab;
+
+    private Vector3 respawnPosition;
+    private GameObject player = null;
+
     // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
         InputController = GetComponentInChildren<InputController>();
+        respawnPosition = transform.position;
+
+        SpawnPlayer();
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SpawnPlayer();
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            respawnPosition = transform.position;
+            SpawnPlayer();
+        }
+    }
+
+    private void SpawnPlayer()
+    {
+        Destroy(player);
+        player = Instantiate(playerPrefab, respawnPosition, Quaternion.identity);
+    }
+
+    public void SetRespawn(Vector3 position)
+    {
+        respawnPosition = position;
+    }
+
+    public void PlayerDestroyed()
+    {
+        player = null;
+    }
+
 }
