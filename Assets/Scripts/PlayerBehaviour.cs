@@ -48,4 +48,13 @@ public class PlayerBehaviour : MonoBehaviour
     {
         GameManager.Instance.PlayerDestroyed();
     }
+
+    public void StopCar()
+    {
+        rigidBody.velocity = Vector3.zero;
+        foreach (Wheel wheel in wheels)
+        {
+            wheel.wheelCollider.rotationSpeed = 0;
+        }
+    }
 }

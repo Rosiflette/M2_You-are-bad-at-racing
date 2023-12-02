@@ -37,8 +37,15 @@ public class GameManager : MonoBehaviour
 
     private void SpawnPlayer()
     {
-        Destroy(player);
-        player = Instantiate(playerPrefab, respawnPosition, Quaternion.identity);
+        if (player == null)
+        {
+            player = Instantiate(playerPrefab, respawnPosition, Quaternion.identity);
+        }
+        else
+        {
+            player.GetComponent<PlayerBehaviour>().StopCar();
+            player.transform.position = respawnPosition;
+        }
     }
 
     public void SetRespawn(Vector3 position)
@@ -50,5 +57,4 @@ public class GameManager : MonoBehaviour
     {
         player = null;
     }
-
 }
