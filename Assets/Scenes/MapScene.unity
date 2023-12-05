@@ -528,6 +528,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -2866482340092182771, guid: dc67dec0922a1e74a9b633f262e95ad8,
         type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1500485831}
+    - target: {fileID: -2866482340092182771, guid: dc67dec0922a1e74a9b633f262e95ad8,
+        type: 3}
       propertyPath: playerB
       value: 
       objectReference: {fileID: 1500485831}
@@ -539,7 +544,7 @@ PrefabInstance:
     - target: {fileID: -2866482340092182771, guid: dc67dec0922a1e74a9b633f262e95ad8,
         type: 3}
       propertyPath: essenceConsommation
-      value: 10
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1569874725439762234, guid: dc67dec0922a1e74a9b633f262e95ad8,
         type: 3}
