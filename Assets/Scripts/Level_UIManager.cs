@@ -19,6 +19,7 @@ public class Level_UIManager : MonoBehaviour
         timePassed += Time.deltaTime;
         int minutes = Mathf.FloorToInt(timePassed/60);
         int seconds = Mathf.FloorToInt(timePassed % 60);
-        textTimer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        int milliseconds = Mathf.FloorToInt((timePassed - Mathf.FloorToInt(timePassed)) * 100);
+        textTimer.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds,milliseconds);
     }
 }
