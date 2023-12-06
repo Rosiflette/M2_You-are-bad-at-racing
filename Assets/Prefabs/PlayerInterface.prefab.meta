@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/PlayerInterface.prefab.meta
 guid: 78b051650125a4d4a99198ddd9cf6fef
+========
+guid: 2edfd2117b4edd04ab46be0330b47fc7
+>>>>>>>> 83d04b05521cd3fdd1d5e79e70b9b48dc5fc6e82:Assets/Prefabs/prop_barrel_explosive.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
