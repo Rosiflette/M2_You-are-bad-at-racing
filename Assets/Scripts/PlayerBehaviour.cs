@@ -14,7 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private TrailRenderer trail;
     private Rigidbody rigidBody;
-    private Wheel[] wheels;
+    public Wheel[] wheels; // TODO : voir avec Ianis parce que passé de private à public
 
     // Start is called before the first frame update
     void Start()
@@ -44,5 +44,19 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
 
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.PlayerDestroyed();
+    }
+
+    public void StopCar()
+    {
+        rigidBody.velocity = Vector3.zero;
+        foreach (Wheel wheel in wheels)
+        {
+            wheel.wheelCollider.rotationSpeed = 0;
+        }
     }
 }

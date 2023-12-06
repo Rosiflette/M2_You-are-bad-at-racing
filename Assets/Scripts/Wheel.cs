@@ -7,7 +7,7 @@ public class Wheel : MonoBehaviour
     [SerializeField] bool steer, invertSteer, power;
     public float SteerAngle, Torque;
 
-    WheelCollider wheelCollider;
+    public WheelCollider wheelCollider;
 
     // Start is called before the first frame update
     void Start()
