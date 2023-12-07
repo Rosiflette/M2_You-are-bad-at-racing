@@ -23,27 +23,33 @@ public class PlayerTestBALL : MonoBehaviour
             car.rotation = transform.rotation;
         }
 
-        Debug.DrawRay(transform.position, Vector3.down * 5, Color.red);
+        //Debug.DrawRay(car.position, Vector3.down * 5, Color.red);
 
-        if (Physics.Raycast(car.position, Vector3.down, out RaycastHit hit, 5f))
-        {
-            Physics.Raycast(car.position + car.forward, Vector3.down, out RaycastHit forwardHit);
-            Physics.Raycast(car.position - car.forward, Vector3.down, out RaycastHit backHit);
+        //if (Physics.Raycast(car.position, Vector3.down, out RaycastHit hit, 5f))
+        //{
+        //    Physics.Raycast(car.position + car.forward, Vector3.down, out RaycastHit forwardHit, 8);
+        //    Physics.Raycast(car.position - car.forward, Vector3.down, out RaycastHit backHit);
 
-            Physics.Raycast(car.position + car.right, Vector3.down, out RaycastHit rightHit);
-            Physics.Raycast(car.position - car.right, Vector3.down, out RaycastHit leftHit);
+        //    //Physics.Raycast(car.position + car.right, Vector3.down, out RaycastHit rightHit);
+        //    //Physics.Raycast(car.position - car.right, Vector3.down, out RaycastHit leftHit);
 
-            Gizmos.DrawSphere(backHit.point, 0.25f);
-            Gizmos.DrawSphere(forwardHit.point, 0.25f);
-            Gizmos.DrawSphere(rightHit.point, 0.25f);
-            Gizmos.DrawSphere(leftHit.point, 0.25f);
+        //    Gizmos.DrawSphere(backHit.point, 0.2f);
+        //    Gizmos.DrawSphere(forwardHit.point, 0.2f);
+        //    //Gizmos.DrawSphere(rightHit.point, 0.2f);
+        //    //Gizmos.DrawSphere(leftHit.point, 0.2f);
 
-            float angleFrontBack = Vector3.SignedAngle(car.forward, forwardHit.point - backHit.point, car.right);
-            float angleLeftRight = Vector3.SignedAngle(car.right, rightHit.point - leftHit.point, car.forward);
-            //angleLeftRight = car.rotation.eulerAngles.z;
+        //    //Debug.DrawLine(backHit.point + Vector3.down, backHit.point + Vector3.up, Color.blue);
+        //    //Debug.DrawLine(forwardHit.point + Vector3.down, forwardHit.point + Vector3.up, Color.blue);
+        //    //Debug.DrawLine(rightHit.point + Vector3.down, rightHit.point + Vector3.up, Color.blue);
+        //    //Debug.DrawLine(leftHit.point + Vector3.down, leftHit.point + Vector3.up, Color.blue);
 
-            car.rotation = Quaternion.Euler(new Vector3(angleFrontBack, car.rotation.eulerAngles.y, angleLeftRight));
-        }
+        //    float angleFrontBack = Vector3.SignedAngle(car.forward, forwardHit.point - backHit.point, car.right);
+        //    //float angleLeftRight = Vector3.SignedAngle(car.right, rightHit.point - leftHit.point, car.forward);
+        //    //angleLeftRight = car.rotation.eulerAngles.z;
+
+        //    //car.rotation = Quaternion.Euler(new Vector3(angleFrontBack, car.rotation.eulerAngles.y, angleLeftRight));
+        //    car.rotation = Quaternion.Euler(angleFrontBack, car.rotation.eulerAngles.y, car.rotation.eulerAngles.z);
+        //}
     }
 
     // Update is called once per frame
@@ -75,27 +81,54 @@ public class PlayerTestBALL : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(car.position, Vector3.down, out RaycastHit hit, 5f))
-        {
-            Physics.Raycast(car.position + car.forward, Vector3.down, out RaycastHit forwardHit);
-            Physics.Raycast(car.position - car.forward, Vector3.down, out RaycastHit backHit);
+        Debug.DrawRay(car.position, Vector3.down * 5, Color.red);
 
-            Physics.Raycast(car.position + car.right, Vector3.down, out RaycastHit rightHit);
-            Physics.Raycast(car.position - car.right, Vector3.down, out RaycastHit leftHit);
+        RaycastHit hitCenter;
 
-            //Gizmos.DrawSphere(backHit.point, 0.25f);
-            //Gizmos.DrawSphere(forwardHit.point, 0.25f);
-            //Gizmos.DrawSphere(rightHit.point, 0.25f);
-            //Gizmos.DrawSphere(leftHit.point, 0.25f);
+        Physics.Raycast(car.position, Vector3.down, out hitCenter);
 
-            //float heightDiff = forwardHit.point.y - backHit.point.y;
+        Vector3 proj = car.forward - (Vector3.Dot(car.forward, hitCenter.normal)) * hitCenter.normal;
 
-            float angleFrontBack = Vector3.SignedAngle(car.forward, forwardHit.point - backHit.point, car.right);
-            float angleLeftRight = Vector3.SignedAngle(car.right, rightHit.point - leftHit.point, car.forward);
-            angleLeftRight = car.rotation.eulerAngles.z;
+        Quaternion rotationRef = Quaternion.Lerp(car.rotation, Quaternion.LookRotation(proj, hitCenter.normal), Time.deltaTime * 10);
 
-            car.rotation = Quaternion.Euler(new Vector3(angleFrontBack, car.rotation.eulerAngles.y, angleLeftRight));
-        }
+        car.rotation = rotationRef;
+
+
+        //if (Physics.Raycast(car.position, Vector3.down, out RaycastHit hit, 5f))
+        //{
+        //    //Physics.Raycast(car.position + car.forward, Vector3.down, out RaycastHit forwardHit, 8);
+        //    //Physics.Raycast(car.position - car.forward, Vector3.down, out RaycastHit backHit);
+
+        //    //Physics.Raycast(car.position + car.right, Vector3.down, out RaycastHit rightHit);
+        //    //Physics.Raycast(car.position - car.right, Vector3.down, out RaycastHit leftHit);
+
+        //    //Gizmos.DrawSphere(backHit.point, 0.2f);
+        //    //Gizmos.DrawSphere(forwardHit.point, 0.2f);
+        //    //Gizmos.DrawSphere(rightHit.point, 0.2f);
+        //    //Gizmos.DrawSphere(leftHit.point, 0.2f);
+
+        //    //Debug.DrawLine(backHit.point + Vector3.down, backHit.point + Vector3.up, Color.blue);
+        //    //Debug.DrawLine(forwardHit.point + Vector3.down, forwardHit.point + Vector3.up, Color.blue);
+        //    //Debug.DrawLine(rightHit.point + Vector3.down, rightHit.point + Vector3.up, Color.blue);
+        //    //Debug.DrawLine(leftHit.point + Vector3.down, leftHit.point + Vector3.up, Color.blue);
+
+        //    //float angleFrontBack = Vector3.SignedAngle(car.forward, forwardHit.point - backHit.point, car.right);
+        //    //print(angleFrontBack);
+        //    //float angleLeftRight = Vector3.SignedAngle(car.right, rightHit.point - leftHit.point, car.forward);
+        //    //angleLeftRight = car.rotation.eulerAngles.z;
+
+        //    //car.rotation = Quaternion.Euler(new Vector3(angleFrontBack, car.rotation.eulerAngles.y, angleLeftRight));
+        //    //car.Rotate(car.right, angleFrontBack);
+        //    //car.Rotate(car.forward, angleLeftRight);
+
+        //    if (Vector3.Cross(hit.normal, car.up) != Vector3.zero)
+        //    {
+        //        print("rotate");
+        //        car.rotation = Quaternion.FromToRotation(car.up, hit.normal);
+        //    }
+
+        //}
+
 
         car.position = transform.position;
     }
