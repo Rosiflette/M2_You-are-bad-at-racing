@@ -14,6 +14,7 @@ public class PlayerTestBALL : MonoBehaviour
     Rigidbody rig;
     float radius;
     bool shielded = false;
+    bool boosting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -60,12 +61,13 @@ public class PlayerTestBALL : MonoBehaviour
         //}
 
 
-        if (false && throttle == 0 && (rig.velocity - Vector3.up * rig.velocity.y).magnitude != 0)
+        if (boosting && rig.velocity.magnitude > maxSpeed)
         {
-            rig.AddForce(- rig.velocity, ForceMode.Force);
+            rig.AddForce(-rig.velocity / 5);
         }
         else
         {
+            boosting = false;
             rig.AddForce(car.forward * throttle * force, ForceMode.Acceleration);
 
             if (rig.velocity.magnitude > maxSpeed)
@@ -95,7 +97,7 @@ public class PlayerTestBALL : MonoBehaviour
     {
         if (shielded)
         {
-            shielded = true;
+            shielded = false;
         }
         else
         {
@@ -106,5 +108,11 @@ public class PlayerTestBALL : MonoBehaviour
     public void Shield()
     {
         shielded = true;
+    }
+
+    public void Boost(Vector3 direction)
+    {
+        boosting = true;
+        rig.AddForce(direction * 100, ForceMode.Impulse);
     }
 }
