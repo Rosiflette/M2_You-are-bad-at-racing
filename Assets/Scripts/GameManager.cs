@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            player.GetComponent<PlayerBehaviour>().StopCar();
+            player.GetComponentInChildren<PlayerBehaviour>().StopCar();
             player.transform.position = respawnPosition;
         }
     }

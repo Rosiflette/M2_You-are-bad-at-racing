@@ -616,6 +616,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7697833893749915538}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2866482340092182771}
   m_SourcePrefab: {fileID: 100100000, guid: 519d66a9c7c3faf4cbe53f09a4e54248, type: 3}
 --- !u!4 &345912622386142517 stripped
 Transform:
@@ -699,6 +703,19 @@ MonoBehaviour:
   motorTorque: 1500
   maxSteer: 20
   trailColor: {r: 0, g: 1, b: 0, a: 0}
+  essenceUtilisation: 0
+--- !u!114 &-2866482340092182771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569874725439762234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8d0b0f9d97818849bce82ae57106b09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2920057842790520508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3570818269929604311, guid: 519d66a9c7c3faf4cbe53f09a4e54248,

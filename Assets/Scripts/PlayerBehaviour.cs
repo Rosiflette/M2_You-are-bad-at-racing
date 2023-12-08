@@ -14,7 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private TrailRenderer trail;
     private Rigidbody rigidBody;
-    private Wheel[] wheels;
+    public Wheel[] wheels; // TODO : voir avec Ianis parce que passé de private à public
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +42,8 @@ public class PlayerBehaviour : MonoBehaviour
             wheel.SteerAngle = Steer * maxSteer;
             wheel.Torque = Throttle * motorTorque;
         }
+
+
     }
 
     private void OnDestroy()
