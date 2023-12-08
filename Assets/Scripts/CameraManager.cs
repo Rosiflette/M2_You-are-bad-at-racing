@@ -6,9 +6,7 @@ using UnityEngine.UIElements;
 
 public class CameraManager : MonoBehaviour
 {
-
-
-        [SerializeField] private float offsetX; 
+    [SerializeField] private float offsetX; 
     [SerializeField] private Transform car;
     [SerializeField] private float step;
 
@@ -19,6 +17,7 @@ public class CameraManager : MonoBehaviour
 
     void Start()
     {
+        basePosition = transform.localPosition;
         offset = roadDirection;
     }
 
@@ -32,10 +31,10 @@ public class CameraManager : MonoBehaviour
         // else{
         //     gameObject.GetComponent<PositionConstraint>().translationOffset = new Vector3(-offsetX, offset.y, offset.z);
         // }
-
-        Vector3 newPosition = car.position + basePosition + (car.forward *5);
-        gameObject.transform.position = newPosition;
-
+        //print(car.position);
+        //Vector3 newPosition = car.position + basePosition + (car.forward *5);
+        //gameObject.transform.position = newPosition;
+        transform.localPosition = car.localPosition + basePosition;
         // if(Vector3.Dot(roadDirection, car.forward) > 0){
         //     offset = offset.magnitude < roadDirection.magnitude ? offset+car.forward*step : offset;
         // }

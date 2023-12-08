@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -72.4}
+  m_AnchoredPosition: {x: 0, y: -72.399994}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7199528466112649946
@@ -2301,6 +2301,11 @@ PrefabInstance:
       propertyPath: fuelGauge
       value: 
       objectReference: {fileID: 7000494516588516944}
+    - target: {fileID: -2866482340092182771, guid: dc67dec0922a1e74a9b633f262e95ad8,
+        type: 3}
+      propertyPath: essenceQuantity
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: -2866482340092182771, guid: dc67dec0922a1e74a9b633f262e95ad8,
         type: 3}
       propertyPath: essenceConsommation

@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerTestBALL : MonoBehaviour
 {
     [SerializeField] Transform car;
-    [SerializeField] float maxSpeed;
+    [SerializeField] float maxSpeed, force;
+    [SerializeField] float maxFuel = 100;
+    [SerializeField] float fuelConsumption, fuelQuantity;
+    [SerializeField] private Slider fuelGauge;
 
     Rigidbody rig;
     float radius;
+    bool shielded = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody>();
         radius = GetComponent<SphereCollider>().radius;
+        fuelQuantity = maxFuel;
     }
 
     private void OnDrawGizmos()
@@ -24,34 +30,6 @@ public class PlayerTestBALL : MonoBehaviour
             car.position = transform.position;
             car.rotation = transform.rotation;
         }
-
-        //Debug.DrawRay(car.position, Vector3.down * 5, Color.red);
-
-        //if (Physics.Raycast(car.position, Vector3.down, out RaycastHit hit, 5f))
-        //{
-        //    Physics.Raycast(car.position + car.forward, Vector3.down, out RaycastHit forwardHit, 8);
-        //    Physics.Raycast(car.position - car.forward, Vector3.down, out RaycastHit backHit);
-
-        //    //Physics.Raycast(car.position + car.right, Vector3.down, out RaycastHit rightHit);
-        //    //Physics.Raycast(car.position - car.right, Vector3.down, out RaycastHit leftHit);
-
-        //    Gizmos.DrawSphere(backHit.point, 0.2f);
-        //    Gizmos.DrawSphere(forwardHit.point, 0.2f);
-        //    //Gizmos.DrawSphere(rightHit.point, 0.2f);
-        //    //Gizmos.DrawSphere(leftHit.point, 0.2f);
-
-        //    //Debug.DrawLine(backHit.point + Vector3.down, backHit.point + Vector3.up, Color.blue);
-        //    //Debug.DrawLine(forwardHit.point + Vector3.down, forwardHit.point + Vector3.up, Color.blue);
-        //    //Debug.DrawLine(rightHit.point + Vector3.down, rightHit.point + Vector3.up, Color.blue);
-        //    //Debug.DrawLine(leftHit.point + Vector3.down, leftHit.point + Vector3.up, Color.blue);
-
-        //    float angleFrontBack = Vector3.SignedAngle(car.forward, forwardHit.point - backHit.point, car.right);
-        //    //float angleLeftRight = Vector3.SignedAngle(car.right, rightHit.point - leftHit.point, car.forward);
-        //    //angleLeftRight = car.rotation.eulerAngles.z;
-
-        //    //car.rotation = Quaternion.Euler(new Vector3(angleFrontBack, car.rotation.eulerAngles.y, angleLeftRight));
-        //    car.rotation = Quaternion.Euler(angleFrontBack, car.rotation.eulerAngles.y, car.rotation.eulerAngles.z);
-        //}
     }
 
     // Update is called once per frame
@@ -65,17 +43,21 @@ public class PlayerTestBALL : MonoBehaviour
         float steer = GameManager.Instance.InputController.SteerInput;
         float throttle = GameManager.Instance.InputController.ThrottleInput;
 
-        float force = 5f;
+        if (throttle != 0)
+        {
+            fuelQuantity -= fuelConsumption * Time.deltaTime;
+            fuelGauge.value = fuelQuantity / maxFuel;
+        }
 
         float angle = Vector3.Angle(car.forward, rig.velocity);
-        if (angle < 45 || !grounded)
+        if (true || angle < 45 || !grounded)
         {
             car.Rotate(Vector3.up * steer * 1.25f);
         }
-        if (steer != 0)
-        {
-            force *= 2;
-        }
+        //if (steer != 0)
+        //{
+        //    force *= 2;
+        //}
 
 
         if (false && throttle == 0 && (rig.velocity - Vector3.up * rig.velocity.y).magnitude != 0)
@@ -101,5 +83,28 @@ public class PlayerTestBALL : MonoBehaviour
         car.rotation = rotationRef;
 
         car.position = transform.position + Vector3.down * (radius - 0.1f);
+    }
+
+    public void Refill()
+    {
+        fuelQuantity = maxFuel;
+        fuelGauge.value = fuelQuantity / maxFuel;
+    }
+
+    public void TakeHit()
+    {
+        if (shielded)
+        {
+            shielded = true;
+        }
+        else
+        {
+            Destroy(transform.parent.gameObject);
+        }
+    }
+
+    public void Shield()
+    {
+        shielded = true;
     }
 }

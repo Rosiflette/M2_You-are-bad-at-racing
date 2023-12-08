@@ -8,7 +8,7 @@ public class ExplosiveBarrelBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
+            collision.transform.parent.GetComponentInChildren<PlayerTestBALL>().TakeHit();
             Destroy(gameObject);
         }
     }

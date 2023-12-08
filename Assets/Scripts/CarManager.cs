@@ -24,7 +24,5 @@ public class CarManager : MonoBehaviour
             fuelGauge.value = essenceQuantity/maxEssence;
         }
     }
-
-
     
 }

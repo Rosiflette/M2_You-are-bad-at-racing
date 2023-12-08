@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Explosive
+  - Fuel
   layers:
   - Default
   - TransparentFX
