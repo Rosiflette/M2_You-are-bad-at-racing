@@ -1949,7 +1949,6 @@ GameObject:
   - component: {fileID: 3239211372279530124}
   - component: {fileID: 5810742433175396625}
   - component: {fileID: 6996686781778551747}
-  - component: {fileID: 1676227341929898482}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2086,30 +2085,15 @@ PositionConstraint:
   serializedVersion: 2
   m_Weight: 1
   m_TranslationAtRest: {x: -22, y: 18, z: 0}
-  m_TranslationOffset: {x: 0, y: 0, z: 0}
+  m_TranslationOffset: {x: -22, y: 18, z: 0}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
   m_Active: 1
   m_IsLocked: 0
   m_Sources:
-  - sourceTransform: {fileID: 0}
+  - sourceTransform: {fileID: 8755303280789482672}
     weight: 1
---- !u!114 &1676227341929898482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8388755258262760427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd300395abbabb4d902f1e53c52b7de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offsetX: 12
-  car: {fileID: 8755303280789482672}
-  step: 1
 --- !u!1 &8654661794284924579
 GameObject:
   m_ObjectHideFlags: 0
