@@ -236,6 +236,7 @@ MonoBehaviour:
   fuelConsumption: 5
   fuelQuantity: 0
   fuelGauge: {fileID: 1402130690266584955}
+  steerRatio: 0.275
 --- !u!1 &1479560296339740989
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,13 +1965,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8388755258262760427}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23258209, y: 0.6677617, z: -0.23258209, w: 0.6677617}
-  m_LocalPosition: {x: -22, y: 18, z: 0}
+  m_LocalRotation: {x: 0.27059805, y: -0.6532815, z: 0.27059805, w: 0.6532815}
+  m_LocalPosition: {x: 30, y: 30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3366368002986719672}
-  m_LocalEulerAnglesHint: {x: 43, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -90, z: 0}
 --- !u!20 &976186281377091689
 Camera:
   m_ObjectHideFlags: 0
@@ -2084,8 +2085,8 @@ PositionConstraint:
   m_Enabled: 1
   serializedVersion: 2
   m_Weight: 1
-  m_TranslationAtRest: {x: -22, y: 18, z: 0}
-  m_TranslationOffset: {x: -22, y: 18, z: 0}
+  m_TranslationAtRest: {x: 30, y: 30, z: 0}
+  m_TranslationOffset: {x: 30, y: 30, z: 0}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -2327,10 +2328,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8502245675211003359}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 7230382016938489489}
   m_SourcePrefab: {fileID: 100100000, guid: 519d66a9c7c3faf4cbe53f09a4e54248, type: 3}
 --- !u!4 &6122137004904061630 stripped
@@ -2345,33 +2342,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6015835304721251669}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &8502245675211003359
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6898920377341493252}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &7230382016938489489
 BoxCollider:
   m_ObjectHideFlags: 0

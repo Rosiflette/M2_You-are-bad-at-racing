@@ -16,10 +16,6 @@ public class Level_UIManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject buttonPause;
 
-    private float timePassed = 0;
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +26,7 @@ public class Level_UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timePassed += Time.deltaTime;
+        float timePassed = GameManager.Instance.TimePassed;
         int minutes = Mathf.FloorToInt(timePassed / 60);
         int seconds = Mathf.FloorToInt(timePassed % 60);
         int milliseconds = Mathf.FloorToInt((timePassed - Mathf.FloorToInt(timePassed)) * 100);
@@ -57,9 +53,9 @@ public class Level_UIManager : MonoBehaviour
 
     public void RestartGame()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        GameManager.Instance.RestartGame();
     }
+
     public void LaunchMainMenu()
     {
         SceneManager.LoadScene("Menu");

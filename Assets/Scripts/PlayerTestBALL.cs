@@ -10,6 +10,7 @@ public class PlayerTestBALL : MonoBehaviour
     [SerializeField] float maxFuel = 100;
     [SerializeField] float fuelConsumption, fuelQuantity;
     [SerializeField] private Slider fuelGauge;
+    [SerializeField, Range(0.1f, 1f)] float steerRatio; 
 
     Rigidbody rig;
     float radius;
@@ -37,7 +38,7 @@ public class PlayerTestBALL : MonoBehaviour
     void Update()
     {
         bool grounded = false;
-        if (Physics.Raycast(transform.position, Vector3.down, radius))
+        if (Physics.Raycast(transform.position, Vector3.down, 2))
             grounded = true;
 
 
@@ -53,7 +54,7 @@ public class PlayerTestBALL : MonoBehaviour
         float angle = Vector3.Angle(car.forward, rig.velocity);
         if (true || angle < 45 || !grounded)
         {
-            car.Rotate(Vector3.up * steer);
+            car.Rotate(Vector3.up * steer * steerRatio);
         }
         //if (steer != 0)
         //{
@@ -68,9 +69,10 @@ public class PlayerTestBALL : MonoBehaviour
         else
         {
             boosting = false;
-            rig.AddForce(car.forward * throttle * force, ForceMode.Acceleration);
+            if (grounded)
+                rig.AddForce(car.forward * throttle * force, ForceMode.Acceleration);
 
-            if (rig.velocity.magnitude > maxSpeed)
+            if (rig.velocity.magnitude > maxSpeed && grounded)
             {
                 rig.velocity = rig.velocity.normalized * maxSpeed;
             }
