@@ -236,7 +236,7 @@ MonoBehaviour:
   fuelConsumption: 5
   fuelQuantity: 0
   fuelGauge: {fileID: 1402130690266584955}
-  steerRatio: 0.275
+  steerRatio: 100
 --- !u!1 &1479560296339740989
 GameObject:
   m_ObjectHideFlags: 0

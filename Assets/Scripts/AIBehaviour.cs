@@ -30,7 +30,11 @@ public class AIBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null) return;
+        if (target == null)
+        {
+            car.position = transform.position;
+            return;
+        }
 
         Debug.DrawLine(transform.position, target.position, Color.blue);
 

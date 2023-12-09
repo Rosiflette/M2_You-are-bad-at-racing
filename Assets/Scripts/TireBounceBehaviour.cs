@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class TireBounceBehaviour : MonoBehaviour
 {
-    [SerializeField, Range(100, 5000)] private int bounceForce = 500;
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField, Range(10, 30)] private int bounceForce;
+    private void OnTriggerEnter(Collider other)
     {
-        Rigidbody playerRigidbody = collision.gameObject.GetComponent<Rigidbody>();
-        Vector3 bounceDirection = (collision.transform.position - transform.position).normalized;
-        float playerSpeed = playerRigidbody.velocity.magnitude;
-        playerRigidbody.AddForce(bounceDirection * bounceForce * playerSpeed, ForceMode.Impulse);
+        Rigidbody playerRigidbody = other.transform.parent.GetComponentInChildren<Rigidbody>();
+        playerRigidbody.velocity = Vector3.zero;
+        playerRigidbody.angularVelocity = Vector3.zero;
+        Vector3 bounceDirection = (playerRigidbody.transform.position - transform.position).normalized;
+
+        print("sdjksdjksfdjk");
+        //float playerSpeed = playerRigidbody.velocity.magnitude;
+        playerRigidbody.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
     }
 }
