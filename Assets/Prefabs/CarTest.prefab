@@ -153,7 +153,7 @@ GameObject:
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8755303280789482672
 Transform:
   m_ObjectHideFlags: 0
@@ -2093,7 +2093,7 @@ PositionConstraint:
   m_Active: 1
   m_IsLocked: 0
   m_Sources:
-  - sourceTransform: {fileID: 8755303280789482672}
+  - sourceTransform: {fileID: 6122137004904061630}
     weight: 1
 --- !u!1 &8654661794284924579
 GameObject:
@@ -2329,6 +2329,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7230382016938489489}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4297848704797352491}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7980087283796610200}
   m_SourcePrefab: {fileID: 100100000, guid: 519d66a9c7c3faf4cbe53f09a4e54248, type: 3}
 --- !u!4 &6122137004904061630 stripped
 Transform:
@@ -2357,9 +2365,52 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.85, y: 1.23, z: 2.99}
   m_Center: {x: 0.027783632, y: 0.53897136, z: -0.076717615}
+--- !u!54 &4297848704797352491
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898920377341493252}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7980087283796610200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898920377341493252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04d7426a56fcca4fa03cfd96991dfa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 40
+  rotationSpeed: 80
+  acceleration: 0.3
+  deceleration: 0.5
