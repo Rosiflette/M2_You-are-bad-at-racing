@@ -53,7 +53,7 @@ public class PlayerTestBALL : MonoBehaviour
         float angle = Vector3.Angle(car.forward, rig.velocity);
         if (true || angle < 45 || !grounded)
         {
-            car.Rotate(Vector3.up * steer * 1.25f);
+            car.Rotate(Vector3.up * steer);
         }
         //if (steer != 0)
         //{

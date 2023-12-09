@@ -2,36 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIBehaviour : MonoBehaviour
+public class AIBehaviourWheelCollider : MonoBehaviour
 {
-    [SerializeField] private Transform car;
+    [SerializeField] private Transform centerOfMass;
+    [SerializeField] private float motorTorque = 1500f;
+    [SerializeField] private float maxSteer = 15f;
+    [SerializeField] private Color trailColor;
     [SerializeField] private Transform target;
-    [SerializeField] private float maxSpeed;
 
-
+    private TrailRenderer trail;
     private Rigidbody rigidBody;
+    private Wheel[] wheels;
 
     // Start is called before the first frame update
     void Start()
     {
+        wheels = GetComponentsInChildren<Wheel>();
         rigidBody = GetComponent<Rigidbody>();
-        rigidBody.velocity = transform.forward * maxSpeed;
-    }
+        rigidBody.centerOfMass = centerOfMass.localPosition;
 
-    private void OnDrawGizmos()
-    {
-        if (!Application.isPlaying)
-        {
-            car.position = transform.position;
-            car.rotation = transform.rotation;
-        }
+        trail = gameObject.AddComponent<TrailRenderer>();
+        trail.time = 5;
+        trail.material.color = trailColor;
+        trail.startWidth = 0.5f;
+        trail.endWidth = 0f;
+        trail.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target == null) return;
-
         Debug.DrawLine(transform.position, target.position, Color.blue);
 
         Vector3 vectorToTarget = target.position - transform.position;
@@ -43,7 +43,7 @@ public class AIBehaviour : MonoBehaviour
         {
             rayCasted++;
             Vector3 posOnLine = transform.position + i * vectorToTargetNormalized;
-
+            
             if (Physics.Raycast(posOnLine, Vector3.down))
             {
                 Debug.DrawRay(posOnLine, Vector3.down, Color.green);
@@ -55,36 +55,28 @@ public class AIBehaviour : MonoBehaviour
             }
         }
 
-        float steer = 0;
+        float Steer = 0;
         if (rayCasted > 0)
         {
             float percentageHit = rayHit / (float)rayCasted;
-            if (percentageHit > 0.5f)
+            if (percentageHit > 0.85f)
             {
-                var angle = Vector3.SignedAngle(car.forward, vectorToTarget, Vector3.up);
+                var angle = Vector3.SignedAngle(transform.forward, vectorToTarget, Vector3.up);
                 if (angle > 0) //right
                 {
-                    steer = 1;
+                    Steer = 1;
                 }
                 else if (angle < 0) //left
                 {
-                    steer = -1;
+                    Steer = -1;
                 }
             }
         }
-        car.Rotate(Vector3.up * steer);
-        float force = 1f;
-        if (steer != 0)
-            force = 5;
-        rigidBody.AddForce(car.forward * force);
-        if (rigidBody.velocity.magnitude > maxSpeed)
+
+        foreach (Wheel wheel in wheels)
         {
-            rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
+            wheel.SteerAngle = Steer * maxSteer;
+            wheel.Torque = motorTorque;
         }
-        car.position = transform.position;
-    }
-    public void SetTarget(Transform t)
-    {
-        target = t;
     }
 }

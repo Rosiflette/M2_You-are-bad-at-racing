@@ -8,8 +8,7 @@ public class CheckpointBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            GameManager.Instance.SetRespawn(transform.position);
-            Destroy(gameObject);
+            GameManager.Instance.SetRespawn(transform.position, transform.rotation);
         }
     }
 }
