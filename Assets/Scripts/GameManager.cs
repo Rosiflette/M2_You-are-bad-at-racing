@@ -39,9 +39,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            respawnPosition = transform.position;
-            respawnOrientation = transform.rotation;
-            SpawnPlayer();
+            RestartGame();
         }
     }
 
@@ -59,14 +57,15 @@ public class GameManager : MonoBehaviour
         {
             //player.GetComponentInChildren<PlayerBehaviour>().StopCar();
             player.GetComponentInChildren<Rigidbody>().velocity = Vector3.zero;
-            player.GetComponentInChildren<SphereCollider>().transform.position = respawnPosition;
+            player.GetComponentInChildren<Rigidbody>().angularVelocity = Vector3.zero;
+            player.GetComponentInChildren<Rigidbody>().transform.position = respawnPosition;
             player.GetComponentInChildren<BoxCollider>().transform.rotation = respawnOrientation;
         }
     }
 
     public void PlayerDestroyed()
     {
-
+        SpawnPlayer();
     }
 
     public void SetRespawn(Vector3 position, Quaternion orientation)

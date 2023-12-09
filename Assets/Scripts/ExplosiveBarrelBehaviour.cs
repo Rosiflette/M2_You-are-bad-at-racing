@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class ExplosiveBarrelBehaviour : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField] GameObject explosion;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.tag == "Player")
         {
-            collision.transform.parent.GetComponentInChildren<PlayerTestBALL>().TakeHit();
+            other.transform.parent.GetComponentInChildren<PlayerTestBALL>().TakeHit();
+            other.transform.parent.GetComponentInChildren<Rigidbody>().AddForce(((other.transform.position + Vector3.up / 2) - transform.position).normalized * 40, ForceMode.Impulse);
             Destroy(gameObject);
         }
     }
 
     private void OnDestroy()
     {
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Collider[] hits = Physics.OverlapSphere(transform.position, 3);
 
         foreach (Collider hit in hits)

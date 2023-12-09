@@ -14,8 +14,8 @@ public class PlayerTestBALL : MonoBehaviour
 
     Rigidbody rig;
     float radius;
-    bool shielded = false;
     bool boosting = false;
+    bool dead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +37,12 @@ public class PlayerTestBALL : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dead)
+        {
+            car.position = transform.position + Vector3.down * (radius - 0.1f);
+            return;
+        }
+
         bool grounded = false;
         if (Physics.Raycast(transform.position, Vector3.down, 2))
             grounded = true;
@@ -97,19 +103,18 @@ public class PlayerTestBALL : MonoBehaviour
 
     public void TakeHit()
     {
-        if (shielded)
-        {
-            shielded = false;
-        }
-        else
-        {
-            Destroy(transform.parent.gameObject);
-        }
+        dead = true;
+        Invoke("Die", 2);
+    }
+
+    private void Die()
+    {
+        GameManager.Instance.PlayerDestroyed();
+        dead = false;
     }
 
     public void Shield()
     {
-        shielded = true;
     }
 
     public void Boost(Vector3 direction)
