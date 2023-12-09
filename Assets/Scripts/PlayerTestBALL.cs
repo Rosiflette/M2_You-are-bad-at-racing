@@ -37,11 +37,11 @@ public class PlayerTestBALL : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (dead)
-        //{
-        //    car.position = transform.position + Vector3.down * (radius - 0.1f);
-        //    return;
-        //}
+        if (dead)
+        {
+            car.position = transform.position + Vector3.down * (radius - 0.1f);
+            return;
+        }
 
         bool grounded = false;
         if (Physics.Raycast(transform.position, Vector3.down, 2))
@@ -103,8 +103,11 @@ public class PlayerTestBALL : MonoBehaviour
 
     public void TakeHit()
     {
-        dead = true;
-        Invoke("Die", 2);
+        if (!dead)
+        {
+            dead = true;
+            Invoke("Die", 1.5f);
+        }
     }
 
     private void Die()

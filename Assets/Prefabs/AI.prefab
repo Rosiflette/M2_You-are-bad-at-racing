@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 7295919143438616951}
   target: {fileID: 0}
-  maxSpeed: 30
+  maxSpeed: 25
 --- !u!1 &5681294443419690159
 GameObject:
   m_ObjectHideFlags: 0

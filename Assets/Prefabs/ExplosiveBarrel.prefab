@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3023914199719207037}
   - component: {fileID: 1456933919235583422}
   m_Layer: 0
-  m_Name: prop_barrel_explosive 1
+  m_Name: ExplosiveBarrel
   m_TagString: Explosive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89427cc29af257c4baaa4b5fc685fc72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repulsionForce: 35
   explosion: {fileID: 3685671664366379182, guid: 746ac037349bc314ebe234442b6111a9,
     type: 3}
 --- !u!54 &3023914199719207037

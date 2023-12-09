@@ -11,14 +11,12 @@ public class YeetableBehaviour : MonoBehaviour
         rigidBody = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.tag == "Player")
         {
-            Vector3 yeetDirection = (transform.position - collision.transform.position).normalized + Vector3.up;
-            yeetDirection = yeetDirection.normalized;
-
-            rigidBody.AddForce(yeetDirection * 5, ForceMode.Impulse);
+            Vector3 yeetDirection = (transform.position - other.transform.position).normalized + Vector3.up;
+            rigidBody.AddForce(yeetDirection * 10, ForceMode.Impulse);
         }
     }
 }

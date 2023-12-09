@@ -11,8 +11,6 @@ public class TireBounceBehaviour : MonoBehaviour
         playerRigidbody.velocity = Vector3.zero;
         playerRigidbody.angularVelocity = Vector3.zero;
         Vector3 bounceDirection = (playerRigidbody.transform.position - transform.position).normalized;
-
-        print("sdjksdjksfdjk");
         //float playerSpeed = playerRigidbody.velocity.magnitude;
         playerRigidbody.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
     }

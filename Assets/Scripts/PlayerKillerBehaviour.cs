@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosiveBarrelBehaviour : MonoBehaviour
+public class PlayerKillerBehaviour : MonoBehaviour
 {
+    [SerializeField, Range(5, 50)] float repulsionForce;
     [SerializeField] GameObject explosion;
 
     private void OnTriggerEnter(Collider other)
@@ -11,8 +12,19 @@ public class ExplosiveBarrelBehaviour : MonoBehaviour
         if (other.tag == "Player")
         {
             other.transform.parent.GetComponentInChildren<PlayerTestBALL>().TakeHit();
-            other.transform.parent.GetComponentInChildren<Rigidbody>().AddForce(((other.transform.position + Vector3.up / 2) - transform.position).normalized * 40, ForceMode.Impulse);
-            Destroy(gameObject);
+            Rigidbody r = other.transform.parent.GetComponentInChildren<Rigidbody>();
+            if (gameObject.tag == "Explosive")
+            {
+                r.AddForce(((other.transform.position + Vector3.up / 2) - transform.position).normalized * repulsionForce, ForceMode.Impulse);
+                Destroy(gameObject);
+            }
+            else
+            {
+                
+                r.velocity = Vector3.zero;
+                r.angularVelocity = Vector3.zero;
+                r.AddForce(-transform.up, ForceMode.Impulse);
+            }
         }
     }
 
