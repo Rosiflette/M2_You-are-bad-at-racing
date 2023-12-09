@@ -110,7 +110,7 @@ public class PlayerTestBALL : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         GameManager.Instance.PlayerDestroyed();
         dead = false;
