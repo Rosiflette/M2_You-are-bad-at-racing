@@ -127,9 +127,10 @@ public class PlayerTestBALL : MonoBehaviour
     {
     }
 
-    public void Boost(Vector3 direction)
+    public void Boost(Vector3 direction, float force)
     {
         boosting = true;
-        rig.AddForce(direction * 100, ForceMode.Impulse);
+        rig.velocity = rig.velocity.normalized * (maxSpeed + 0.5f);
+        rig.AddForce(direction * force, ForceMode.Impulse);
     }
 }

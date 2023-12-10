@@ -13,5 +13,9 @@ public class Water : MonoBehaviour
         else if(other.tag == "AI"){
             Destroy(other.transform.parent.gameObject);
         }
+        else if (other.tag == "PNJ")
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
