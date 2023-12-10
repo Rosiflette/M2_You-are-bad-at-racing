@@ -10,9 +10,11 @@ public class PlayerTestBALL : MonoBehaviour
     [SerializeField] float maxFuel = 100;
     [SerializeField] float fuelConsumption, fuelQuantity;
     [SerializeField] private Slider fuelGauge;
-    [SerializeField, Range(50f, 150f)] float steerRatio = 100f; 
+    [SerializeField, Range(50f, 150f)] float steerRatio = 100f;
+    [SerializeField] Color startTrailColor, endTrailColor;
 
     Rigidbody rig;
+    TrailRenderer trail;
     float radius;
     bool boosting = false;
     bool dead = false;
@@ -23,6 +25,15 @@ public class PlayerTestBALL : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         radius = GetComponent<SphereCollider>().radius;
         fuelQuantity = maxFuel;
+
+        trail = gameObject.AddComponent<TrailRenderer>();
+        trail.time = 0.2f;
+        trail.startColor = startTrailColor;
+        trail.endColor = endTrailColor;
+        trail.material = new Material(Shader.Find("Sprites/Default"));
+        trail.startWidth = 0.8f;
+        trail.endWidth = 0f;
+        trail.enabled = true;
     }
 
     private void OnDrawGizmos()

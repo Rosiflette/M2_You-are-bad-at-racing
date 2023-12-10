@@ -238,6 +238,8 @@ MonoBehaviour:
   fuelQuantity: 0
   fuelGauge: {fileID: 1402130690266584955}
   steerRatio: 100
+  startTrailColor: {r: 1, g: 0, b: 0, a: 0.7058824}
+  endTrailColor: {r: 1, g: 1, b: 0, a: 1}
 --- !u!1 &1479560296339740989
 GameObject:
   m_ObjectHideFlags: 0

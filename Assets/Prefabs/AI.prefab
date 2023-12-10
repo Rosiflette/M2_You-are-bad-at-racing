@@ -96,7 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 7295919143438616951}
   target: {fileID: 0}
-  maxSpeed: 25
+  maxSpeed: 30
+  force: 10
   explosion: {fileID: 3685671664366379182, guid: 746ac037349bc314ebe234442b6111a9,
     type: 3}
 --- !u!1 &5681294443419690159

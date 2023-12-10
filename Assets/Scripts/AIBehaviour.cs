@@ -6,7 +6,7 @@ public class AIBehaviour : MonoBehaviour
 {
     [SerializeField] private Transform car;
     [SerializeField] private Transform target;
-    [SerializeField] private float maxSpeed;
+    [SerializeField] private float maxSpeed, force;
     [SerializeField] private GameObject explosion;
 
     private Rigidbody rigidBody;
@@ -77,9 +77,6 @@ public class AIBehaviour : MonoBehaviour
             }
         }
         car.Rotate(Vector3.up * steer);
-        float force = 1f;
-        if (steer != 0)
-            force = 5;
         rigidBody.AddForce(car.forward * force);
         rigidBody.velocity = Vector3.Project(rigidBody.velocity,car.forward * Time.deltaTime *100 + rigidBody.velocity);
         if (rigidBody.velocity.magnitude > maxSpeed)
