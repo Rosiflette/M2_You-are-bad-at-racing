@@ -13,7 +13,8 @@ public class FinishBehaviour : MonoBehaviour
             float velocity = Mathf.Round(r.velocity.magnitude * 10) / 10;
             if (velocity == 0)
             {
-                print("Bravo c'est fini !");
+                GameManager.Instance.FinishGame();
+                gameObject.SetActive(false);
             }
         }
     }

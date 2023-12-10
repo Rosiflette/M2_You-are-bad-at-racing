@@ -10,17 +10,23 @@ using UnityEngine.SceneManagement;
 public class Level_UIManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textTimer;
-
     [SerializeField] private Sprite pauseImage;
     [SerializeField] private Sprite playImage;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject buttonPause;
+    [SerializeField] private GameObject HUD;
+    [SerializeField] private GameObject finishMenu;
+    [SerializeField] private TextMeshProUGUI textGameFinished;
+    [SerializeField] private TextMeshProUGUI textRespawn;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        HUD.SetActive(true);
+        finishMenu.SetActive(false);
+        textRespawn.enabled = false;
     }
 
     // Update is called once per frame
@@ -35,7 +41,20 @@ public class Level_UIManager : MonoBehaviour
         {
             PauseGame();
         }
+
     }
+
+    public void RespawningText(float time){
+        textRespawn.enabled = true;
+        textRespawn.text = "You are respawning in " + time + " seconds";
+    }
+
+    public void RespawningTextToFalse(){
+        textRespawn.enabled = false;
+    }
+
+
+
 
     public void PauseGame()
     {
@@ -54,6 +73,17 @@ public class Level_UIManager : MonoBehaviour
     public void RestartGame()
     {
         GameManager.Instance.RestartGame();
+    }
+
+    public void FinishGame(){
+        float timePassed = GameManager.Instance.TimePassed;
+        int minutes = Mathf.FloorToInt(timePassed / 60);
+        int seconds = Mathf.FloorToInt(timePassed % 60);
+        int milliseconds = Mathf.FloorToInt((timePassed - Mathf.FloorToInt(timePassed)) * 100);
+        string time = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
+        textGameFinished.text = "You win in " + time;
+        HUD.SetActive(false);
+        finishMenu.SetActive(true);
     }
 
     public void LaunchMainMenu()

@@ -18,6 +18,7 @@ public class PlayerTestBALL : MonoBehaviour
     [SerializeField] private Slider fuelGauge;
     [SerializeField, Range(50f, 150f)] float steerRatio = 100f;
     [SerializeField] Color startTrailColor, endTrailColor;
+    [SerializeField] Material mat;
 
     Rigidbody rig;
     TrailRenderer trail;
@@ -41,6 +42,7 @@ public class PlayerTestBALL : MonoBehaviour
         trail.startWidth = 0.8f;
         trail.endWidth = 0f;
         trail.enabled = true;
+        mat.SetFloat("_burnFactor", 0);
     }
 
     // Update is called once per frame
@@ -88,12 +90,12 @@ public class PlayerTestBALL : MonoBehaviour
         else
         {
             boosting = false;
-            if (grounded) 
+            if (grounded)
             {
                 rig.AddForce(car.forward * throttle * force, ForceMode.Acceleration);
                 // project rigibody velocity on the forward vector of the mesh
                 // allows sharper turn
-                rig.velocity = Vector3.Project(rig.velocity,car.forward * Time.deltaTime *100 + rig.velocity);
+                rig.velocity = Vector3.Project(rig.velocity, car.forward * Time.deltaTime * 100 + rig.velocity);
             }
 
             if (rig.velocity.magnitude > maxSpeed && grounded)
@@ -117,7 +119,7 @@ public class PlayerTestBALL : MonoBehaviour
         Quaternion rotationRef = Quaternion.Lerp(car.rotation, Quaternion.LookRotation(proj, hitCenter.normal), Time.deltaTime * 10);
         car.rotation = rotationRef;
         // END
-        
+
         // place the mesh at the location of the collider
         car.position = transform.position + Vector3.down * (radius - 0.1f);
     }
@@ -134,6 +136,8 @@ public class PlayerTestBALL : MonoBehaviour
         {
             dead = true;
             Invoke("Die", 1f);
+            transform.parent.GetComponentInChildren<Level_UIManager>().RespawningText(1f);
+            mat.SetFloat("_burnFactor", 0.8f);
         }
     }
 
@@ -143,6 +147,7 @@ public class PlayerTestBALL : MonoBehaviour
         GameManager.Instance.PlayerDestroyed();
         dead = false;
         Refill();
+        mat.SetFloat("_burnFactor", 0);
     }
 
     public void Boost(Vector3 direction, float force)

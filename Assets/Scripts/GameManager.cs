@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private GameObject player = null;
     private GameObject[] radars;
 
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -71,6 +72,7 @@ public class GameManager : MonoBehaviour
     public void PlayerDestroyed()
     {
         SpawnPlayer();
+        player.GetComponentInChildren<Level_UIManager>().RespawningTextToFalse();
     }
 
     public void SetRespawn(Vector3 position, Quaternion orientation)
@@ -83,5 +85,12 @@ public class GameManager : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+    }
+
+    public void FinishGame()
+    {
+
+        player.GetComponentInChildren<Level_UIManager>().FinishGame();
+
     }
 }
