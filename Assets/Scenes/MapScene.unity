@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17559916, g: 0.21972364, b: 0.30204862, a: 1}
+  m_IndirectSpecularColor: {r: 0.17559893, g: 0.21972327, b: 0.3020479, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19119,6 +19119,21 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 1829361744309527156, guid: 4f615144e09bdbd4391af1cf7d57bca0,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 755.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829361744309527156, guid: 4f615144e09bdbd4391af1cf7d57bca0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829361744309527156, guid: 4f615144e09bdbd4391af1cf7d57bca0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 177
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829361744309527156, guid: 4f615144e09bdbd4391af1cf7d57bca0,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 755.3
       objectReference: {fileID: 0}
@@ -21072,6 +21087,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Finish
       objectReference: {fileID: 0}
+    - target: {fileID: 5612940743243165697, guid: 029b1ce1802bc7a4b8b03e778dbe3bae,
+        type: 3}
+      propertyPath: confettis
+      value: 
+      objectReference: {fileID: 2764636476492454743, guid: d809223df1b40d6439c74c9b52936588,
+        type: 3}
     - target: {fileID: 6999345740040350047, guid: 029b1ce1802bc7a4b8b03e778dbe3bae,
         type: 3}
       propertyPath: m_LocalPosition.x

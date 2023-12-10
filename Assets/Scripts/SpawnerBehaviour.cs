@@ -27,7 +27,7 @@ public class SpawnerBehaviour : MonoBehaviour
         if (t > spawnTime)
         {
             Vector3 position = transform.position - Random.value * (transform.position - limit.position);
-            Instantiate(prefab, position, transform.rotation);
+            Instantiate(prefab, position, transform.rotation, transform);
             t = 0;
             spawnTime = Random.Range(spawnMinTime, spawnMaxTime);
         }
