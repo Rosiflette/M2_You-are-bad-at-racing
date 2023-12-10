@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 8137289616864261642}
   - component: {fileID: 6878613867780697524}
   m_Layer: 7
-  m_Name: GameObject
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -232,6 +232,7 @@ MonoBehaviour:
   car: {fileID: 6122137004904061630}
   maxSpeed: 30
   force: 10
+  breakForce: 30
   maxFuel: 100
   fuelConsumption: 5
   fuelQuantity: 0
@@ -2286,6 +2287,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8070602767926943318, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d8efb0bc282f854ba028269647af787, type: 2}
+    - target: {fileID: -4978346307054517892, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d8efb0bc282f854ba028269647af787, type: 2}
+    - target: {fileID: -3240267134860261619, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d8efb0bc282f854ba028269647af787, type: 2}
+    - target: {fileID: -2751231214129419264, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d8efb0bc282f854ba028269647af787, type: 2}
+    - target: {fileID: 797686559034118034, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d8efb0bc282f854ba028269647af787, type: 2}
     - target: {fileID: 919132149155446097, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
         type: 3}
       propertyPath: m_Name
@@ -2321,6 +2347,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6247321191157086908, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d8efb0bc282f854ba028269647af787, type: 2}
+    - target: {fileID: 6483705217821973121, guid: 519d66a9c7c3faf4cbe53f09a4e54248,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5d8efb0bc282f854ba028269647af787, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerTestBALL : MonoBehaviour
 {
     [SerializeField] Transform car;
-    [SerializeField] float maxSpeed, force;
+    [SerializeField] float maxSpeed, force, breakForce;
     [SerializeField] float maxFuel = 100;
     [SerializeField] float fuelConsumption, fuelQuantity;
     [SerializeField] private Slider fuelGauge;
@@ -51,7 +51,11 @@ public class PlayerTestBALL : MonoBehaviour
         float steer = GameManager.Instance.InputController.SteerInput;
         float throttle = GameManager.Instance.InputController.ThrottleInput;
 
-        if (throttle != 0)
+        if (throttle < 0)
+        {
+            throttle = 0;
+        }
+        else if (throttle != 0)
         {
             fuelQuantity -= fuelConsumption * Time.deltaTime;
             fuelGauge.value = fuelQuantity / maxFuel;
@@ -62,10 +66,6 @@ public class PlayerTestBALL : MonoBehaviour
         {
             car.Rotate(Vector3.up * steer * steerRatio * Time.deltaTime);
         }
-        //if (steer != 0)
-        //{
-        //    force *= 2;
-        //}
 
 
         if (boosting && rig.velocity.magnitude > maxSpeed)
@@ -84,6 +84,11 @@ public class PlayerTestBALL : MonoBehaviour
             {
                 rig.velocity = rig.velocity.normalized * maxSpeed;
             }
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rig.angularVelocity = Vector3.zero;
         }
 
         Debug.DrawRay(car.position, car.forward * 10, Color.red);
@@ -108,7 +113,7 @@ public class PlayerTestBALL : MonoBehaviour
         if (!dead)
         {
             dead = true;
-            Invoke("Die", 1.5f);
+            Invoke("Die", 1f);
         }
     }
 

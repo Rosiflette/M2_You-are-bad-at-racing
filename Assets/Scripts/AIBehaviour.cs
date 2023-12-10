@@ -7,7 +7,7 @@ public class AIBehaviour : MonoBehaviour
     [SerializeField] private Transform car;
     [SerializeField] private Transform target;
     [SerializeField] private float maxSpeed;
-
+    [SerializeField] private GameObject explosion;
 
     private Rigidbody rigidBody;
 
@@ -91,5 +91,19 @@ public class AIBehaviour : MonoBehaviour
     public void SetTarget(Transform t)
     {
         target = t;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.transform.parent.GetComponentInChildren<PlayerTestBALL>().TakeHit();
+            Invoke("Die", 1f);
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(transform.parent.gameObject);
     }
 }
