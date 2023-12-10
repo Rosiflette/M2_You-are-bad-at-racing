@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Spawn PNJ cars in a semi-randomize time
 public class SpawnerBehaviour : MonoBehaviour
 {
     [SerializeField] GameObject prefab;

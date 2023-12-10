@@ -6,6 +6,7 @@ public class FinishBehaviour : MonoBehaviour
 {
     private void OnTriggerStay(Collider other)
     {
+        // player needs to be stop in the finish zone to win :)
         if (other.tag == "Player")
         {
             Rigidbody r = other.transform.parent.GetComponentInChildren<Rigidbody>();

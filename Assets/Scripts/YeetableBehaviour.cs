@@ -15,6 +15,8 @@ public class YeetableBehaviour : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            // if the player collides with the object
+            // sends the object flying (fun :) )
             Vector3 yeetDirection = (transform.position - other.transform.position).normalized + Vector3.up;
             rigidBody.AddForce(yeetDirection * 10, ForceMode.Impulse);
         }

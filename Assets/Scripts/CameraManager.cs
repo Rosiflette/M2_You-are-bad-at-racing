@@ -4,6 +4,13 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.UIElements;
 
+/*
+ * !!!
+ * THIS SCRIPT ISN'T USED IN THE GAME
+ * FOR TESTING PURPOSES ONLY
+ * !!!
+ */
+
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] private float offsetX; 

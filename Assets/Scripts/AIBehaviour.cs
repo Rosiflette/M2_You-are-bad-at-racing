@@ -11,23 +11,14 @@ public class AIBehaviour : MonoBehaviour
 
     private Rigidbody rigidBody;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+
+        // AI starts with maximum velocity
         rigidBody.velocity = transform.forward * maxSpeed;
     }
 
-    private void OnDrawGizmos()
-    {
-        if (!Application.isPlaying)
-        {
-            car.position = transform.position;
-            car.rotation = transform.rotation;
-        }
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (target == null)
@@ -43,6 +34,8 @@ public class AIBehaviour : MonoBehaviour
 
         int rayHit = 0;
         int rayCasted = 0;
+
+        // shoot a ray down periodically to check if the collide with the road
         for (int i = 1; (i * vectorToTargetNormalized).magnitude < vectorToTarget.magnitude - 1; i++)
         {
             rayCasted++;
@@ -63,6 +56,8 @@ public class AIBehaviour : MonoBehaviour
         if (rayCasted > 0)
         {
             float percentageHit = rayHit / (float)rayCasted;
+            // AI needs at least 60% of ray colliding with road to turn to target
+            // allows to anticipate turns
             if (percentageHit > 0.6f)
             {
                 var angle = Vector3.SignedAngle(car.forward, vectorToTarget, Vector3.up);
@@ -76,15 +71,24 @@ public class AIBehaviour : MonoBehaviour
                 }
             }
         }
+
         car.Rotate(Vector3.up * steer);
         rigidBody.AddForce(car.forward * force);
-        rigidBody.velocity = Vector3.Project(rigidBody.velocity,car.forward * Time.deltaTime *100 + rigidBody.velocity);
+        
+        // project rigibody velocity on the forward vector of the mesh
+        // allows sharper turn
+        rigidBody.velocity = Vector3.Project(rigidBody.velocity, car.forward * Time.deltaTime * 100 + rigidBody.velocity);
+        
+        // cap AI speed to maxSpeed
         if (rigidBody.velocity.magnitude > maxSpeed)
         {
             rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;
         }
+
+        // place the mesh at the location of the collider
         car.position = transform.position;
     }
+
     public void SetTarget(Transform t)
     {
         target = t;
@@ -92,6 +96,7 @@ public class AIBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // AI kills the player when colliding
         if (other.tag == "Player")
         {
             other.transform.parent.GetComponentInChildren<PlayerTestBALL>().TakeHit();

@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * !!!
+ * THIS SCRIPT ISN'T USED IN THE GAME
+ * FOR TESTING PURPOSES ONLY
+ * !!!
+ */
+
 public class CarManager : MonoBehaviour
 {
     [SerializeField] private float maxEssence = 100;

@@ -8,6 +8,7 @@ public class PNJBehaviour : MonoBehaviour
 
     private void Start()
     {
+        // randomize car speed
         speed += Random.value * 20;
     }
 
@@ -21,6 +22,7 @@ public class PNJBehaviour : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            // push the player
             other.transform.parent.GetComponentInChildren<PlayerTestBALL>().Boost(transform.forward, speed / 2);
         }
     }

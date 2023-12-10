@@ -13,6 +13,7 @@ public class RadarBehaviour : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            // instantiate a police car that chases the player (if its target is set)
             var spawned = Instantiate(policePrefab, spawnPoint.position, spawnPoint.rotation);
             spawned.GetComponentInChildren<AIBehaviour>().SetTarget(target);
         }

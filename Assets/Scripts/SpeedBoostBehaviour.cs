@@ -10,6 +10,7 @@ public class SpeedBoostBehaviour : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            // push the player
             other.transform.parent.GetComponentInChildren<PlayerTestBALL>().Boost(transform.forward, boostForce);
         }
     }

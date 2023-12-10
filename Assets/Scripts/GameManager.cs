@@ -19,9 +19,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        // singleton (approximately)
         Instance = this;
         TimePassed = 0;
         InputController = GetComponentInChildren<InputController>();
+
+        // base respawn location on the gameManager
         respawnPosition = transform.position;
         respawnOrientation = transform.rotation;
 
@@ -55,7 +58,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //player.GetComponentInChildren<PlayerBehaviour>().StopCar();
+            // if player already spawned, re-locate it
             Rigidbody playerRigiBody = player.GetComponentInChildren<Rigidbody>();
             playerRigiBody.velocity = Vector3.zero;
             playerRigiBody.angularVelocity = Vector3.zero;

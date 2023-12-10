@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * !!!
+ * THIS SCRIPT ISN'T USED IN THE GAME
+ * FOR TESTING PURPOSES ONLY
+ * !!!
+ */
+
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] private Transform centerOfMass;

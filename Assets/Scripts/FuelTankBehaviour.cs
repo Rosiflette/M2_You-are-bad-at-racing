@@ -15,12 +15,15 @@ public class FuelTankBehaviour : MonoBehaviour
 
     private void Update()
     {
+        // idle animation
         transform.position = basePosition + Vector3.up * Mathf.Sin(Time.time * speed) / 2;
         transform.rotation = Quaternion.Euler(Vector3.up * rotate * Time.time);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // if player collide with fuel tank, refill the car
+        // then disable fuel tank and re-enable it after 3 seconds
         if (other.tag == "Player")
         {
             other.transform.parent.GetComponentInChildren<PlayerTestBALL>().Refill();

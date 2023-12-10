@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
+    // the water kills anything it collides with
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
