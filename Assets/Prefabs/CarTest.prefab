@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 6122137004904061630}
-  maxSpeed: 25
+  maxSpeed: 30
   force: 10
   maxFuel: 100
   fuelConsumption: 5

@@ -63,7 +63,7 @@ public class AIBehaviour : MonoBehaviour
         if (rayCasted > 0)
         {
             float percentageHit = rayHit / (float)rayCasted;
-            if (percentageHit > 0.5f)
+            if (percentageHit > 0.6f)
             {
                 var angle = Vector3.SignedAngle(car.forward, vectorToTarget, Vector3.up);
                 if (angle > 0) //right
@@ -81,6 +81,7 @@ public class AIBehaviour : MonoBehaviour
         if (steer != 0)
             force = 5;
         rigidBody.AddForce(car.forward * force);
+        rigidBody.velocity = Vector3.Project(rigidBody.velocity,car.forward * Time.deltaTime *100 + rigidBody.velocity);
         if (rigidBody.velocity.magnitude > maxSpeed)
         {
             rigidBody.velocity = rigidBody.velocity.normalized * maxSpeed;

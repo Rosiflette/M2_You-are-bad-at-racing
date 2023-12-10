@@ -193,10 +193,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: YSAR_prop_Kart_Police_001_meshArmature
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e87fc2ee49249a42a40705d286576ca,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e87fc2ee49249a42a40705d286576ca,
+        type: 3}
+      propertyPath: m_TagString
+      value: AI
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3e87fc2ee49249a42a40705d286576ca,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 839566563268587489}
   m_SourcePrefab: {fileID: 100100000, guid: 3e87fc2ee49249a42a40705d286576ca, type: 3}
 --- !u!4 &7295919143438616951 stripped
 Transform:
@@ -204,3 +218,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7118773410881924764}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7929606815058351053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3e87fc2ee49249a42a40705d286576ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 7118773410881924764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &839566563268587489
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7929606815058351053}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6890526, y: 1.0001355, z: 2.9008837}
+  m_Center: {x: 0.029221594, y: 0.4839875, z: -0.036055207}

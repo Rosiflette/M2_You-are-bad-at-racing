@@ -10,5 +10,8 @@ public class Water : MonoBehaviour
         {
             other.transform.parent.GetComponentInChildren<PlayerTestBALL>().Die();
         }
+        else if(other.tag == "AI"){
+            Destroy(other.transform.parent.gameObject);
+        }
     }
 }

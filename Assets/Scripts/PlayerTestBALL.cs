@@ -75,8 +75,10 @@ public class PlayerTestBALL : MonoBehaviour
         else
         {
             boosting = false;
-            if (grounded)
+            if (grounded){
                 rig.AddForce(car.forward * throttle * force, ForceMode.Acceleration);
+                rig.velocity = Vector3.Project(rig.velocity,car.forward * Time.deltaTime *100 + rig.velocity);
+            }
 
             if (rig.velocity.magnitude > maxSpeed && grounded)
             {
