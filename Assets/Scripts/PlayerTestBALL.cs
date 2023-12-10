@@ -54,6 +54,11 @@ public class PlayerTestBALL : MonoBehaviour
             return;
         }
 
+        if (fuelQuantity < 0)
+        {
+            TakeHit();
+        }
+
         bool grounded = false;
         if (Physics.Raycast(transform.position, Vector3.down, 2))
             grounded = true;
@@ -132,10 +137,7 @@ public class PlayerTestBALL : MonoBehaviour
     {
         GameManager.Instance.PlayerDestroyed();
         dead = false;
-    }
-
-    public void Shield()
-    {
+        Refill();
     }
 
     public void Boost(Vector3 direction, float force)

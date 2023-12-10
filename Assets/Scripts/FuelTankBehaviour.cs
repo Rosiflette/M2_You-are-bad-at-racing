@@ -24,7 +24,13 @@ public class FuelTankBehaviour : MonoBehaviour
         if (other.tag == "Player")
         {
             other.transform.parent.GetComponentInChildren<PlayerTestBALL>().Refill();
-            Destroy(gameObject);
+            Invoke("Enable", 3);
+            gameObject.SetActive(false);
         }
+    }
+
+    private void Enable()
+    {
+        gameObject.SetActive(true);
     }
 }

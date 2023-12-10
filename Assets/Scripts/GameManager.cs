@@ -56,10 +56,12 @@ public class GameManager : MonoBehaviour
         else
         {
             //player.GetComponentInChildren<PlayerBehaviour>().StopCar();
-            player.GetComponentInChildren<Rigidbody>().velocity = Vector3.zero;
-            player.GetComponentInChildren<Rigidbody>().angularVelocity = Vector3.zero;
-            player.GetComponentInChildren<Rigidbody>().transform.position = respawnPosition;
+            Rigidbody playerRigiBody = player.GetComponentInChildren<Rigidbody>();
+            playerRigiBody.velocity = Vector3.zero;
+            playerRigiBody.angularVelocity = Vector3.zero;
+            playerRigiBody.transform.position = respawnPosition;
             player.GetComponentInChildren<BoxCollider>().transform.rotation = respawnOrientation;
+            player.GetComponentInChildren<PlayerTestBALL>().Refill();
         }
     }
 
