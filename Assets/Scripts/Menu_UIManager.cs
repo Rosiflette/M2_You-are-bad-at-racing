@@ -15,8 +15,6 @@ public class Menu_UIManager : MonoBehaviour
     }
 
     public void QuitGame(){
-        UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
-
     }
 }
