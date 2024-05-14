@@ -61,11 +61,13 @@ public class Level_UIManager : MonoBehaviour
             Time.timeScale = 1;
             buttonPause.GetComponent<Image>().sprite = pauseImage;
             pauseMenu.SetActive(false);
+            HUD.SetActive(true);
         }
         else{
             buttonPause.GetComponent<Image>().sprite = playImage;
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
+            HUD.SetActive(false);
         }
     }
 
