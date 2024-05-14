@@ -14,7 +14,7 @@ public class MovingCarMenu : MonoBehaviour
     void Update()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 lookPosition = new Vector3(mousePosition.x*2-450, mousePosition.y + gameObject.transform.position.y -200, -1000);
+        Vector3 lookPosition = new Vector3(mousePosition.x - 50, mousePosition.y - 10, 0);
         gameObject.transform.LookAt(lookPosition);
     }
 }

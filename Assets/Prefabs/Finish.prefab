@@ -94,3 +94,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7a6017aca04964b99c6826844f71bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confettis: {fileID: 0}
