@@ -12,7 +12,7 @@ using UnityEngine.UI;
 public class PlayerTestBALL : MonoBehaviour
 {
     [SerializeField] Transform car;
-    [SerializeField] float maxSpeed, force, brakeForce;
+    [SerializeField] float maxSpeed, force, slowingForce;
     [SerializeField] float maxFuel = 100;
     [SerializeField] float fuelConsumption, fuelQuantity;
     [SerializeField] private Slider fuelGauge;
@@ -92,7 +92,16 @@ public class PlayerTestBALL : MonoBehaviour
             boosting = false;
             if (grounded)
             {
-                rig.AddForce(car.forward * throttle * force, ForceMode.Acceleration);
+                if (throttle > 0)
+                {
+                    rig.AddForce(car.forward * throttle * force, ForceMode.Acceleration);
+                }
+                else
+                {
+                    float newSpeed = Mathf.Clamp(rig.velocity.magnitude - maxSpeed * Time.deltaTime * slowingForce, 0, maxSpeed);
+                    rig.velocity = rig.velocity.normalized * newSpeed;
+                }
+
                 // project rigibody velocity on the forward vector of the mesh
                 // allows sharper turn
                 rig.velocity = Vector3.Project(rig.velocity, car.forward * Time.deltaTime * 100 + rig.velocity);

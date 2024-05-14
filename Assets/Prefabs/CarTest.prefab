@@ -215,7 +215,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6878613867780697524
 MonoBehaviour:
@@ -232,7 +232,7 @@ MonoBehaviour:
   car: {fileID: 6122137004904061630}
   maxSpeed: 30
   force: 60
-  brakeForce: 0
+  slowingForce: 1.5
   maxFuel: 100
   fuelConsumption: 3
   fuelQuantity: 0
